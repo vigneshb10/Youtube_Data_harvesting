@@ -10,7 +10,7 @@ mongodb_comment = []
 
 
 def get_youtube_data(channelid):  # setting an connection to YouTube and get datas using youtube data api
-    api_key = "AIzaSyAT6pfTnbwbahMqucxK4zaAL5ciCjDyrnU"  # connecting to YouTube using unique API key
+    api_key = ""  # connecting to YouTube using unique API key
     api_service_name = "youtube"
     api_version = "v3"
     youtube = build(api_service_name, api_version, developerKey=api_key)  # setting up connection to YouTube
@@ -401,7 +401,7 @@ channel_id = st.text_input(label='Enter the channel id', placeholder="Enter the 
 mongodb_button = st.button('Get Data', help='Click to fetch and load mongodb with youtube datas')
 
 # Connecting to mongodb, creating database youtube_db and creating a collection for each channel_id
-connection_string = "mongodb+srv://vignesb097:robertlewandowski@cluster0.wcdutss.mongodb.net/"
+connection_string = "mongodb+srv://<username>:<password>@cluster0.wcdutss.mongodb.net/"
 myclient = MongoClient(connection_string)
 mydb = myclient["youtube_db"]
 
@@ -411,7 +411,7 @@ if channel_id != '':
     mycol = mydb[f'{channel_id}']
 
 # Connecting to mysql
-my_db = mysql.connector.connect(host="localhost", user="root", password="robertlewandowski")
+my_db = mysql.connector.connect(host="localhost", user="username", password="password")
 
 # creating streamlit selection box with list of channel ids already populated in mongodb
 for collection_id in collection_list:
